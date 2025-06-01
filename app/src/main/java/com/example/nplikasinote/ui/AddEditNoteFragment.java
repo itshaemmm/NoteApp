@@ -86,17 +86,6 @@ public class AddEditNoteFragment extends Fragment {
             noteId = args.getInt("noteId", -1);
             String title = args.getString("title", "");
             String content = args.getString("content", "");
-            // Anda mungkin juga perlu mengambil informasi reminder jika sudah ada
-            // long existingReminderTime = args.getLong("reminderTime", -1);
-            // if (existingReminderTime != -1) {
-            //     selectedReminderTimeInMillis = existingReminderTime;
-            //     selectedCalendar = Calendar.getInstance();
-            //     selectedCalendar.setTimeInMillis(selectedReminderTimeInMillis);
-            //     updateReminderText(textReminderDatetime);
-            //     // Tampilkan opsi reminder jika sudah ada reminder
-            //     layoutReminderOptionsContainer.setVisibility(View.VISIBLE);
-            // }
-
 
             editTitle.setText(title);
             editContent.setText(content);
@@ -174,11 +163,6 @@ public class AddEditNoteFragment extends Fragment {
                 // imageButtonSetReminder.setImageResource(R.drawable.ic_alarm_on_vector);
             } else {
                 layoutReminderOptionsContainer.setVisibility(View.GONE);
-                // Reset pilihan reminder jika disembunyikan
-                // selectedReminderTimeInMillis = -1;
-                // selectedCalendar = null;
-                // textReminderDatetime.setText("Belum ada tanggal & waktu dipilih");
-                // imageButtonSetReminder.setImageResource(R.drawable.ic_set_reminder); // kembalikan ke ikon awal
             }
         });
 
@@ -241,20 +225,11 @@ public class AddEditNoteFragment extends Fragment {
                     return; // Jangan lanjut setReminder dulu sampai user aktifkan izin
                 }
             }
-            // Jika sudah punya izin atau versi OS di bawah S, baru set reminder
-            // Tentukan requestCode yang unik untuk note ini. Jika note baru, ID belum ada.
-            // Kita bisa gunakan ID note jika sudah ada, atau timestamp jika baru.
             int uniqueRequestCode = noteId != -1 ? noteId : (int) (timestamp % Integer.MAX_VALUE);
             setReminder(selectedReminderTimeInMillis, title, content, uniqueRequestCode);
             note.setReminderTime(selectedReminderTimeInMillis); // Simpan waktu reminder ke note
             Toast.makeText(getContext(), "Reminder diset", Toast.LENGTH_SHORT).show();
         } else if (noteId != -1 && layoutReminderOptionsContainer.getVisibility() == View.GONE) {
-            // Jika opsi reminder disembunyikan, dan ini adalah edit note, batalkan reminder yang mungkin ada
-            // Anda perlu cara untuk mengetahui apakah sebelumnya ada reminder
-            // Misal dengan mengambil data reminderTime dari note yang di-load
-            // Untuk saat ini, kita asumsikan jika user menyembunyikan opsi, dia ingin membatalkan reminder
-            // Ini perlu disesuaikan dengan logika Anda saat memuat note
-            // Logika cancelReminder(noteId) bisa ditambahkan di sini jika perlu.
             note.setReminderTime(0); // Tandai tidak ada reminder
         }
 
