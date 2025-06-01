@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000"
+    tools:context=".ui.AddEditNoteFragment">
+
+    <ScrollView
+        android:id="@+id/scroll_view_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/layout_reminder_options_container"
+        android:padding="16dp"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:id="@+id/edit_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Judul Catatan"
+                android:inputType="textCapSentences"
+                android:padding="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC" />
+
+            <EditText
+                android:id="@+id/edit_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="200dp" android:layout_marginTop="16dp"
+                android:gravity="top"
+                android:hint="Isi Catatan"
+                android:inputType="textMultiLine"
+                android:padding="12dp"
+                android:textColor="#FFFFFF"
+                android:textColorHint="#CCCCCC" />
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/layout_reminder_options_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_above="@+id/bottom_action_bar"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:visibility="gone" tools:visibility="visible"> <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <Button
+            android:id="@+id/button_pick_date"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Pilih Tanggal"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_marginEnd="4dp"/>
+
+        <Button
+            android:id="@+id/button_pick_time"
+            style="?android:attr/buttonBarButtonStyle"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:text="Pilih Waktu"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF"
+            android:layout_marginStart="4dp"/>
+    </LinearLayout>
+
+        <TextView
+            android:id="@+id/text_reminder_datetime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Belum ada tanggal &amp; waktu dipilih"
+            android:paddingTop="8dp"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textColor="#FFFFFF" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/bottom_action_bar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:background="#000000" android:paddingStart="8dp"
+        android:paddingEnd="8dp">
+
+        <ImageButton
+            android:id="@+id/button_save_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/save_24dp" android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Simpan Catatan"
+            app:tint="#FF9500" /> <ImageButton
+        android:id="@+id/button_delete_icon"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:src="@drawable/baseline_delete_24" android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Hapus Catatan"
+        android:visibility="gone" app:tint="#FF9500" />
+
+        <ImageButton
+            android:id="@+id/button_set_reminder_icon"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:src="@drawable/baseline_notifications_24" android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Setel Pengingat"
+            app:tint="#FF9500" />
+    </LinearLayout>
+
+</RelativeLayout>
